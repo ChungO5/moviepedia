@@ -38,7 +38,7 @@ const FileInput = ({ name, value, onChange }) => {
                 onChange={handleChange}
                 ref={inputRef}
             />
-            ;{value && <button onClick={handleClearClick}>X</button>}
+            {value && <button onClick={handleClearClick}>X</button>}
         </div>
     );
 };
