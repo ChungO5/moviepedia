@@ -1,15 +1,15 @@
 import { useCallback, useState } from "react";
 
-function useAsync(asyncFunction) {
+const useAsync = (asyncFunction) => {
     const [pending, setPending] = useState(false);
     const [error, setError] = useState(null);
 
     const wrappedFunction = useCallback(
-        async (...args) => {
+        async (...rest) => {
             try {
                 setError(null);
                 setPending(true);
-                return await asyncFunction(...args);
+                return await asyncFunction(...rest);
             } catch (error) {
                 setError(error);
                 return;
@@ -21,6 +21,6 @@ function useAsync(asyncFunction) {
     );
 
     return [pending, error, wrappedFunction];
-}
+};
 
 export default useAsync;
